@@ -10,6 +10,7 @@ import { createStore } from 'redux';
 import { Provider } from 'react-redux';
 import { store } from './reducers/store';
 import BookSlot from './components/BookSlot';
+import ListSlot from './components/ListSlot';
 
 function App() {
 	return (
@@ -23,6 +24,7 @@ function App() {
 						<Route path='/' element={<TodoList />} />
 						<Route path='/addslot' element={<BookSlot />} />
 						<Route path='/list' element={<TodoList />} />
+						<Route path='/list' element={<ListSlot />} />
 					</Routes>
 				</div>
 			</BrowserRouter>
