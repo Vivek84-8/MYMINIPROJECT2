@@ -77,13 +77,13 @@ const Signup = () => {
 
   return (
     <motion.div
-    className='bg'
+    className='signup-bg pt-5'
       initial={{opacity: 0, x: '100%' }}
       animate={{opacity: 1, x: 0}}
       exit={{opacity: 0, x: '-100%'}}
       transition={{duration: 0.3, type: 'spring', stiffness: 50, damping: 10}}
     >
-      <div className="w-25">
+      <div className="col-md-3 mx-auto">
         <div className="card">
           <div className="card-body">
             <h3 className="text-center">Signup Form</h3>
@@ -106,7 +106,7 @@ const Signup = () => {
               <span style={{color: 'red', fontSize: '0.7em', marginLeft: 10}}>{signupForm.errors.age}</span>
               <input type="number" className="form-control mb-3" name="age" onChange={signupForm.handleChange} value={signupForm.values.age} />
 
-              <input type="file" onChange={uploadFile}  />
+              {/* <input type="file" onChange={uploadFile}  /> */}
 
               <button disabled={signupForm.isSubmitting} className="btn btn-primary w-100 mt-5">Submit</button>
             </form>

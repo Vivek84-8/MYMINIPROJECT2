@@ -53,7 +53,7 @@ function BookSlot() {
 
     return (
 
-        <div className="col m-2 hero-image   text-center font-weight-bold text-white" >
+        <div className="col m-2 hero-image text-center font-weight-bold text-white" >
             <br />
 
             <h1 className="text-center"> Add Your Details</h1>

@@ -1,76 +1,61 @@
-import React, { useState, useEffect } from 'react';
-import { useDispatch } from 'react-redux';
-import { deleteTodo } from '../reducers/actions';
-import { addTodo } from '../reducers/actions';
+import React from 'react';
 import './TodoInput.css';
-function TodoItem({ todo }) {
-	let dispatch = useDispatch();
-	let id = todo.id;
-	let [name, setName] = useState();
-	let [phone, setPhone] = useState();
+import toast from 'react-hot-toast';
+
+
+function TodoItem({ slot, refresh }) {
+
+	// console.log(slot);
+
+
+	const deleteSlot = async (id) => {
+		const res = await fetch('http://localhost:5000/slot/delete/'+id, {
+			method: 'DELETE'
+		});
+
+		console.log(res.status);
+
+		if(res.status === 200){
+			toast.success('Slot Successfully Removed');
+			refresh();
+		}
+
+	}
 
 	return (
-
-
-		<div className=" d-inline-block col-md-3  ">
-
-
-			{todo.name ?
+		<div className="col-md-3">
+			{slot.name ?
 				<div className="col mx-auto  border border-dark m-3 bg-light hero-image-booked">
 					<div className="p-2 text-white text-center">
 						<strong>This slot is booked</strong></div>
 					<div className="p-1 text-white text-center">
-						<strong> Parking Slot No.#{todo.id}</strong></div>
+						<strong> Parking Slot No.#{slot.slot}</strong></div>
 					<div className="p-2 text-white text-center">
-						<h4> <strong>{todo.name}</strong></h4>
-
+						<h4><strong>{slot.name}</strong></h4>
 					</div>
 					<div className="p-2 text-white text-center">
-						<h4> <strong>{todo.phone}</strong></h4>
-
+						<h4> <strong>{slot.phone}</strong></h4>
 					</div>
 					<div className="text-center">
 						<button
-							onClick={() => {
-								setPhone('');
-								setName('');
-								dispatch(deleteTodo(
-									{
-										...todo,
-										name: name,
-										phone: phone
-									}
-
-								))
-							}} className="btn btn-danger border border-white m-2"> <strong>Leave </strong></button>
+							onClick={() => { deleteSlot(slot._id) }} className="btn btn-danger border border-white m-2"> <strong>Leave </strong></button>
 					</div>
 				</div> :
 				<div className="col m-3 bg-dark   hero-image-empty">
 					<div className="p-2 text-center ">
-						<strong> Parking Slot No. #{todo.id}</strong></div>
+						<strong> Parking Slot No. #{slot.id}</strong></div>
 					<label className="text-center"><strong>Enter Your name</strong></label>
 					<input
 						type="text"
-						value={name}
-						onChange={(e) => setName(e.target.value)}
-						className="col form-control" />
+						className="col form-control" readOnly />
 					<label className="text-center" ><strong>Enter phone number</strong></label>
 					<input
 						type="number"
-						value={phone}
-						onChange={(e) => setPhone(e.target.value)}
-						className="col form-control" />
+						className="col form-control" readOnly />
 					<div className="text-center">
 						<button
 							onClick={() => {
-								dispatch(addTodo(
-									{
-										...todo,
-										name: name,
-										phone: phone
-									}));
-								setPhone('');
-								setName('');
+
 
 							}}
 
