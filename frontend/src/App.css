@@ -3,5 +3,12 @@
 } */
 
 .signup-bg{
-  background-image: url('');
+  background-image: url('https://media.istockphoto.com/id/1086329452/photo/empty-parking-lot.jpg?s=612x612&w=0&k=20&c=EjuUn0YTgv2nVRWIeyLvO_yQQwJOr877cQl9E87FjKc=');
+  background-size: cover;
+  min-height: 100vh;
+}
+
+.login-bg{
+  min-height: 100vh;
+  background-color: aqua;
 }

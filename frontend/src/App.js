@@ -12,6 +12,7 @@ import {Toaster} from 'react-hot-toast';
 import Signup from './components/Signup';
 import Login from './components/Login';
 import UserAuth from './components/UserAuth';
+import './App.css';
 
 
 function App() {
